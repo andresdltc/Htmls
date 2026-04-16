@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hola Paulette</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+    background: linear-gradient(135deg,#ff9ad5,#ffd6ec,#ffc3a0);
+    overflow:hidden;
+    position:relative;
+}
+
+.container{
+    text-align:center;
+    padding-top:70px;
+}
+
+h1{
+    font-size:42px;
+    color:#ff1493;
+}
+
+p{
+    font-size:24px;
+    margin-top:10px;
+    color:#333;
+}
+
+.buttons{
+    margin-top:40px;
+}
+
+button{
+    border:none;
+    padding:16px 24px;
+    border-radius:15px;
+    font-size:18px;
+    cursor:pointer;
+    margin:10px;
+    background:#ff69b4;
+    color:white;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+#result{
+    margin-top:30px;
+    font-size:28px;
+    font-weight:bold;
+    color:#111;
+}
+
+#escapeBtn{
+    position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hola Lic. Melanni<3 </h1>
+    <p>¿Qué haces? ¿Por qué no me respondes? </p>
+
+    <div class="buttons">
+        <button onclick="reply(' Estoy ignorándote')">Estoy ignorándote</button>
+        <button onclick="reply(' Estoy comiendo')">Estoy comiendo</button>
+        <button onclick="reply(' Estoy en el baño')">Estoy en el baño</button>
+        <button onclick="reply(' Estoy durmiendo')">Estoy durmiendo</button>
+    </div>
+
+    <div id="result"></div>
+</div>
+
+<button id="escapeBtn">Estoy trabajando </button>
+
+<script>
+function reply(text){
+    document.getElementById("result").innerHTML = text;
+}
+
+const btn = document.getElementById("escapeBtn");
+
+btn.style.left = "40%";
+btn.style.top = "75%";
+
+function moveButton(){
+    const maxX = window.innerWidth - btn.offsetWidth;
+    const maxY = window.innerHeight - btn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+btn.addEventListener("mouseover", moveButton);
+btn.addEventListener("mousedown", moveButton);
+</script>
+
+</body>
+</html>
