@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Johana </title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        text-align: center;
+        padding-top: 50px;
+        color: #333;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    #clock {
+        font-size: 2em;
+        margin: 20px 0;
+        font-weight: bold;
+    }
+
+    .alarm {
+        font-size: 60px;
+        animation: shake 0.5s infinite;
+        display: inline-block;
+    }
+
+    @keyframes shake {
+        0% { transform: rotate(-10deg); }
+        50% { transform: rotate(10deg); }
+        100% { transform: rotate(-10deg); }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background-color: #ff6f61;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff3b2e;
+    }
+
+    #mensajeFinal {
+        margin-top: 30px;
+        font-size: 1.8em;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<h1>Johana </h1>
+<h2>Ya se te acabó el tiempo de descanso :)</h2>
+
+<div class="alarm">⏰</div>
+
+<div id="clock"></div>
+
+<button onclick="mostrarMensaje()">Haz clic aquí</button>
+
+<div id="mensajeFinal">¿Me perdonas bro? </div>
+
+<script>
+function actualizarReloj() {
+    const ahora = new Date();
+    let horas = ahora.getHours();
+    let minutos = ahora.getMinutes();
+    let segundos = ahora.getSeconds();
+
+    horas = horas < 10 ? "0" + horas : horas;
+    minutos = minutos < 10 ? "0" + minutos : minutos;
+    segundos = segundos < 10 ? "0" + segundos : segundos;
+
+    document.getElementById("clock").textContent =
+        horas + ":" + minutos + ":" + segundos;
+}
+
+setInterval(actualizarReloj, 1000);
+
+function mostrarMensaje() {
+    document.getElementById("mensajeFinal").style.display = "block";
+}
+</script>
+
+</body>
+</html>
