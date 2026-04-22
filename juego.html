@@ -1,0 +1,131 @@
+<!<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego para una odiosa 🥤</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+        padding-top: 50px;
+    }
+
+    #game {
+        position: relative;
+        width: 400px;
+        height: 150px;
+        margin: auto;
+    }
+
+    .cup {
+        width: 80px;
+        height: 100px;
+        background: white;
+        border: 2px solid #333;
+        border-radius: 0 0 40px 40px;
+        position: absolute;
+        cursor: pointer;
+        transition: left 0.5s;
+    }
+
+    #cup0 { left: 20px; }
+    #cup1 { left: 160px; }
+    #cup2 { left: 300px; }
+
+    .cup:hover {
+        transform: translateY(-10px);
+    }
+
+    #message {
+        margin-top: 40px;
+        font-size: 1.5em;
+        display: none;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        background: #ff6f61;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1>Johana Pacheco:)<3</h1>
+<h2>Si encuentras la pelota escondida dejo de discutirte por ese tema para siempre</h2>
+
+<div id="game">
+    <div class="cup" id="cup0" onclick="elegir()"></div>
+    <div class="cup" id="cup1" onclick="elegir()"></div>
+    <div class="cup" id="cup2" onclick="elegir()"></div>
+</div>
+
+<button onclick="mezclar()">Mezclar vasos 🔄</button>
+
+<div id="message"></div>
+
+<script>
+let posiciones = [20, 160, 300];
+let jugando = false;
+
+function mezclar() {
+    jugando = true;
+    let cups = [
+        document.getElementById("cup0"),
+        document.getElementById("cup1"),
+        document.getElementById("cup2")
+    ];
+
+    let movimientos = 15;
+
+    let intervalo = setInterval(() => {
+        let a = Math.floor(Math.random() * 3);
+        let b = Math.floor(Math.random() * 3);
+
+        if (a !== b) {
+            // intercambiar posiciones
+            let temp = posiciones[a];
+            posiciones[a] = posiciones[b];
+            posiciones[b] = temp;
+
+            cups[a].style.left = posiciones[a] + "px";
+            cups[b].style.left = posiciones[b] + "px";
+        }
+
+        movimientos--;
+        if (movimientos <= 0) {
+            clearInterval(intervalo);
+        }
+    }, 300);
+
+    document.getElementById("message").style.display = "none";
+}
+
+function elegir() {
+    if (!jugando) return;
+
+    const mensajes = [
+        " Casi...",
+        " Nope",
+        " Tampoco bro",
+        " Nunca estuvo ahí",
+        " Imposible ganar"
+    ];
+
+    let mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+    document.getElementById("message").style.display = "block";
+    document.getElementById("message").textContent =
+        mensaje + " — Intenta otra vez 😅";
+
+    jugando = false;
+}
+</script>
+
+</body>
+</html>
