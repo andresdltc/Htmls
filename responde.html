@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RESPONDE YA 😈</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+        font-family: Arial, sans-serif;
+    }
+
+    .mensaje {
+        position: absolute;
+        color: #ff3b3b;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: crecer 2s ease-in-out forwards;
+    }
+
+    @keyframes crecer {
+        from { transform: scale(1); opacity: 1; }
+        to { transform: scale(3); opacity: 0; }
+    }
+
+    /* efecto temblor */
+    .shake {
+        animation: shake 0.2s infinite;
+    }
+
+    @keyframes shake {
+        0% { transform: translate(2px, 2px); }
+        25% { transform: translate(-2px, 2px); }
+        50% { transform: translate(-2px, -2px); }
+        75% { transform: translate(2px, -2px); }
+        100% { transform: translate(2px, 2px); }
+    }
+
+    #botonFinal {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        background: #ff3b3b;
+        color: white;
+        cursor: pointer;
+        display: none;
+        z-index: 999;
+    }
+</style>
+</head>
+<body>
+
+<button id="botonFinal" onclick="alert('POR FIN 😭')">
+    ya te voy a responder 😭
+</button>
+
+<audio id="alarma" loop>
+    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let contador = 0;
+
+function crearMensaje() {
+    const msg = document.createElement("div");
+    msg.className = "mensaje";
+    msg.textContent = "YA RESPONDEME POR FAVORR 😭";
+
+    msg.style.left = Math.random() * window.innerWidth + "px";
+    msg.style.top = Math.random() * window.innerHeight + "px";
+    msg.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+    document.body.appendChild(msg);
+
+    // eliminar cuando termina animación
+    setTimeout(() => {
+        msg.remove();
+    }, 2000);
+
+    contador++;
+
+    // activar caos progresivo
+    if (contador === 10) {
+        document.body.classList.add("shake");
+        document.getElementById("alarma").play();
+    }
+
+    if (contador === 25) {
+        document.getElementById("botonFinal").style.display = "block";
+    }
+}
+
+// flujo controlado
+setInterval(() => {
+    for (let i = 0; i < 2; i++) {
+        crearMensaje();
+    }
+}, 400);
+
+</script>
+
+</body>
+</html>
