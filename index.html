@@ -173,11 +173,6 @@ button{
 
 </head>
     
-<script>
-  document.getElementById("si").addEventListener("click", function () {
-    window.location.href = "comida.html";
-  });
-</script>
 <body>
 
 <div class="card">
@@ -258,36 +253,9 @@ no.addEventListener("touchstart", function(e){
     moverBoton();
 });
 
-// Botón Sí
+// Botón Sí: redirige a comida.html
 si.addEventListener("click", () => {
-
-    botones.style.display = "none";
-    mensaje.style.display = "block";
-
-    // Lluvia de corazones y flores
-    for(let i = 0; i < 120; i++){
-
-        setTimeout(() => {
-
-            let emoji = document.createElement("div");
-            emoji.className = "corazon";
-
-            emoji.innerHTML = Math.random() > 0.5 ? "💖" : "🌸";
-
-            emoji.style.left = Math.random() * window.innerWidth + "px";
-            emoji.style.top = window.innerHeight + "px";
-            emoji.style.fontSize = (20 + Math.random() * 30) + "px";
-
-            document.body.appendChild(emoji);
-
-            setTimeout(() => {
-                emoji.remove();
-            }, 4000);
-
-        }, i * 60);
-
-    }
-
+    window.location.href = "comida.html";
 });
 
 </script>
