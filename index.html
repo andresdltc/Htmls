@@ -1,1 +1,289 @@
-Bienvenido
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntaaa Kawaii para Haru</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Nunito',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:linear-gradient(135deg,#ffd6e8,#ffe5f5,#e2d7ff,#d9f6ff);
+    background-size:400% 400%;
+    animation:fondo 10s infinite alternate;
+}
+
+@keyframes fondo{
+    0%{background-position:left;}
+    100%{background-position:right;}
+}
+
+.card{
+    width:650px;
+    max-width:90%;
+    background:white;
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    text-align:center;
+    position:relative;
+}
+
+h1{
+    font-size:36px;
+    color:#ff5c9d;
+    margin-top:-80px;
+    margin-bottom:20px;
+}
+
+img{
+    width:150px;
+    margin-bottom:8px;
+    animation:flotar 2.5s infinite ease-in-out;
+}
+
+@keyframes flotar{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+p{
+    font-size:28px;
+    color:#555;
+    font-weight:bold;
+    margin-bottom:35px;
+}
+
+.botones{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    position:relative;
+    height:90px;
+}
+
+button{
+    border:none;
+    padding:18px 42px;
+    font-size:24px;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
+}
+
+#si{
+    background:#ff5c9d;
+    color:white;
+    box-shadow:0 8px 20px rgba(255,92,157,.4);
+}
+
+#si:hover{
+    transform:scale(1.12);
+}
+
+#no{
+    background:#8ddcff;
+    color:white;
+    position:absolute;
+    left:360px;
+    top:0;
+    transition:all .25s ease;
+}
+
+#mensaje{
+    display:none;
+    margin-top:30px;
+    font-size:32px;
+    color:#ff4f96;
+    animation:aparece .8s;
+}
+
+@keyframes aparece{
+    from{
+        opacity:0;
+        transform:scale(.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.corazon{
+    position:absolute;
+    font-size:28px;
+    pointer-events:none;
+    animation:subir 4s linear forwards;
+}
+
+@keyframes subir{
+    0%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-600px) scale(2);
+    }
+}
+
+.izquierda{
+    position:fixed;
+    left:30px;
+    bottom:20px;
+    width:220px;
+    z-index:0;
+    pointer-events:none;
+}
+
+.derecha{
+    position:fixed;
+    right:30px;
+    bottom:20px;
+    width:220px;
+    z-index:0;
+    pointer-events:none;
+}
+
+.card{
+    position:relative;
+    z-index:10;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+
+<img src="izquierda.png" class="izquierda">
+<img src="derecha.png" class="derecha">
+
+<div class="card">
+
+<h1> Hey... Onii-chan 👉🏽👈🏽 </h1>
+
+<p>
+¿Aceptas ir a comer conmigo mañana sábado? 🥺👉🏽👈🏽
+</p>
+
+<div class="botones">
+    <button id="si">Sí</button>
+    <button id="no">No</button>
+</div>
+
+<div id="mensaje">
+     Me alegro mucho que hayas aceptado:) otra vez <br><br>
+    <br>
+    ¡Nos vemos mañana! 
+</div>
+
+</div>
+
+<script>
+
+const no = document.getElementById("no");
+const si = document.getElementById("si");
+const card = document.querySelector(".card");
+const botones = document.querySelector(".botones");
+const mensaje = document.getElementById("mensaje");
+
+// Posición inicial del botón "No"
+no.style.left = "360px";
+no.style.top = "0px";
+
+// Mueve el botón dentro del contenedor
+function moverBoton() {
+
+    const contRect = botones.getBoundingClientRect();
+
+    const maxX = contRect.width - no.offsetWidth;
+    const maxY = contRect.height - no.offsetHeight;
+
+    let x, y;
+    let distancia;
+
+    do {
+
+        x = Math.random() * maxX;
+        y = Math.random() * maxY;
+
+        const actualX = parseFloat(no.style.left) || 0;
+        const actualY = parseFloat(no.style.top) || 0;
+
+        distancia = Math.sqrt(
+            Math.pow(x - actualX, 2) +
+            Math.pow(y - actualY, 2)
+        );
+
+    } while (distancia < 160); // Distancia mínima en píxeles
+
+    no.style.left = x + "px";
+    no.style.top = y + "px";
+}
+
+// Cuando el cursor intenta tocar el botón
+no.addEventListener("mouseenter", moverBoton);
+
+// Por si alguien intenta tocarlo desde un celular
+no.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moverBoton();
+});
+
+// Botón Sí
+si.addEventListener("click", () => {
+
+    botones.style.display = "none";
+    mensaje.style.display = "block";
+
+    // Lluvia de corazones y flores
+    for(let i = 0; i < 120; i++){
+
+        setTimeout(() => {
+
+            let emoji = document.createElement("div");
+            emoji.className = "corazon";
+
+            emoji.innerHTML = Math.random() > 0.5 ? "💖" : "🌸";
+
+            emoji.style.left = Math.random() * window.innerWidth + "px";
+            emoji.style.top = window.innerHeight + "px";
+            emoji.style.fontSize = (20 + Math.random() * 30) + "px";
+
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 4000);
+
+        }, i * 60);
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
