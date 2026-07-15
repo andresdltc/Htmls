@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una oportunidad ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+
+body{
+
+    height:100vh;
+    overflow:hidden;
+    background:#111;
+
+}
+
+
+/* ESCENAS */
+
+.escena{
+
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:1s;
+
+}
+
+
+.escena.activa{
+
+    opacity:1;
+    pointer-events:auto;
+
+}
+
+
+
+/* -------------------
+   ESCENA 1
+------------------- */
+
+
+#inicio{
+
+background:
+
+linear-gradient(
+180deg,
+#25253d,
+#12121f
+);
+
+color:white;
+
+}
+
+
+/* lluvia */
+
+.lluvia{
+
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+
+}
+
+
+
+.gota{
+
+position:absolute;
+
+width:2px;
+height:80px;
+
+background:
+linear-gradient(
+transparent,
+rgba(255,255,255,.5)
+);
+
+animation:
+
+caer linear infinite;
+
+}
+
+
+@keyframes caer{
+
+
+from{
+
+transform:translateY(-100px);
+
+}
+
+
+to{
+
+transform:translateY(110vh);
+
+}
+
+
+}
+
+
+
+
+.contenido{
+
+z-index:2;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+
+
+/* CORAZON */
+
+.corazon-roto{
+
+
+font-size:130px;
+
+animation:
+
+flotar 3s infinite ease-in-out;
+
+
+filter:
+drop-shadow(0 0 20px #ff6688);
+
+
+}
+
+
+
+@keyframes flotar{
+
+
+0%,100%{
+
+transform:
+translateY(0);
+
+}
+
+
+50%{
+
+transform:
+translateY(-25px);
+
+}
+
+
+}
+
+
+
+h1{
+
+font-size:40px;
+
+margin:20px 0;
+
+}
+
+
+p{
+
+font-size:22px;
+
+opacity:.9;
+
+}
+
+
+
+
+
+button{
+
+
+margin-top:35px;
+
+padding:16px 40px;
+
+border:none;
+
+border-radius:50px;
+
+
+font-size:20px;
+
+cursor:pointer;
+
+
+background:
+linear-gradient(
+45deg,
+#ff477e,
+#ff85a1
+);
+
+
+color:white;
+
+
+box-shadow:
+0 10px 30px rgba(255,70,120,.5);
+
+
+transition:.3s;
+
+
+}
+
+
+
+button:hover{
+
+transform:
+scale(1.08);
+
+}
+
+
+
+
+
+/* -------------------
+   ESCENA CARTA
+------------------- */
+
+
+#carta{
+
+background:
+
+linear-gradient(
+135deg,
+#ffd6e7,
+#fff
+);
+
+}
+
+
+
+.sobre{
+
+
+font-size:120px;
+
+cursor:pointer;
+
+animation:
+
+flotar 2s infinite;
+
+
+}
+
+
+
+.texto-carta{
+
+
+background:white;
+
+max-width:600px;
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.15);
+
+
+font-size:22px;
+
+line-height:1.6;
+
+
+display:none;
+
+}
+
+
+
+.visible{
+
+display:block;
+
+animation:
+
+aparecer 1s;
+
+
+}
+
+
+
+@keyframes aparecer{
+
+
+from{
+
+opacity:0;
+transform:
+translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+
+
+/* -------------------
+   ESCENA PUZZLE
+------------------- */
+
+
+#puzzle{
+
+background:
+
+linear-gradient(
+135deg,
+#ffe1ec,
+#fff
+);
+
+
+}
+
+
+
+.corazones{
+
+display:flex;
+
+gap:20px;
+
+}
+
+
+.pieza{
+
+
+width:90px;
+
+height:90px;
+
+
+background:#ff6b9d;
+
+border-radius:20px;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+font-size:45px;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
+box-shadow:
+
+0 10px 25px rgba(255,0,100,.2);
+
+
+}
+
+
+
+.pieza:hover{
+
+transform:
+scale(1.15);
+
+}
+
+
+.reparada{
+
+background:#ff2f68;
+
+transform:
+rotate(360deg);
+
+}
+
+
+
+
+
+/* FINAL */
+
+#final{
+
+background:
+
+linear-gradient(
+135deg,
+#ffb6d9,
+#fff
+);
+
+}
+
+
+.corazon-final{
+
+font-size:160px;
+
+
+animation:
+
+latido 1s infinite;
+
+
+}
+
+
+
+@keyframes latido{
+
+
+50%{
+
+transform:
+scale(1.2);
+
+}
+
+}
+
+
+
+
+
+/* CELULAR */
+
+@media(max-width:600px){
+
+
+h1{
+
+font-size:28px;
+
+}
+
+
+.corazon-roto{
+
+font-size:90px;
+
+}
+
+
+button{
+
+font-size:16px;
+
+}
+
+
+
+}
+
+#invitacion{
+
+background:linear-gradient(
+135deg,
+#ffd6e7,
+#ffffff
+);
+
+color:#444;
+
+z-index:10;
+
+}
+
+
+#invitacion h1,
+#invitacion h2{
+
+color:#e91e63;
+
+}
+
+@keyframes caerCorazon{
+
+
+0%{
+
+transform:
+translateY(-100px)
+rotate(0deg);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:
+translateY(100vh)
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+
+
+@keyframes caerCorazonRoto{
+
+
+0%{
+
+transform:
+translateY(-100px)
+rotate(0deg);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:
+translateY(100vh)
+rotate(-360deg);
+
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ESCENA INICIAL -->
+
+
+<section id="inicio" class="escena activa">
+
+
+<div class="lluvia" id="lluvia"></div>
+
+
+<div class="contenido">
+
+
+<div class="corazon-roto">
+
+💔
+
+</div>
+
+
+<h1>
+
+Sé que cometí un error...
+
+</h1>
+
+
+<p>
+
+Por favor permiteme demostrarte que si te puedo dar paz y todo lo bueno que mereces
+
+</p>
+
+
+<button onclick="abrirHistoria()">
+
+💖 click aqui para arreglar las cosas
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+<!-- ESCENA CARTA -->
+
+
+<section id="carta" class="escena">
+
+
+<div class="sobre" onclick="abrirCarta()">
+
+💌
+
+</div>
+
+
+<div class="texto-carta" id="textoCarta">
+
+
+<h2>
+
+Para ti, Haru❤️
+
+</h2>
+
+<br>
+
+
+<p id="escritura">
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- ESCENA PUZZLE -->
+
+
+<section id="puzzle" class="escena">
+
+
+<h1>
+
+Click para curar los corazones:) ❤️
+
+</h1>
+
+
+<div class="corazones">
+
+
+<div class="pieza" onclick="reparar(this,1)">
+💔
+</div>
+
+
+<div class="pieza" onclick="reparar(this,2)">
+💔
+</div>
+
+
+<div class="pieza" onclick="reparar(this,3)">
+💔
+</div>
+
+
+</div>
+
+
+<p id="mensajePuzzle"></p>
+
+
+</section>
+
+<!-- ESCENA INVITACION DESAYUNO -->
+
+<section id="invitacion" class="escena">
+
+
+<div id="lluviaFinal"></div>
+
+
+<h1>
+Tengo una pregunta para ti 
+</h1>
+
+
+<div class="sobre-final">
+Imagina un ceviche delicoso aqui :p
+</div>
+
+
+<h2>
+¿Aceptas ir a desayunar conmigo este sábado?
+</h2>
+
+
+<div class="botones">
+
+
+<button onclick="aceptarDesayuno()">
+ Sí
+</button>
+
+
+<button id="noDesayuno" onclick="noDesayuno()">
+No
+</button>
+
+
+</div>
+
+
+<div id="respuestaFinal"></div>
+
+
+</section>
+
+<script>
+
+
+// lluvia
+
+
+for(let i=0;i<80;i++){
+
+
+let gota=document.createElement("div");
+
+gota.className="gota";
+
+
+gota.style.left=Math.random()*100+"%";
+
+
+gota.style.animationDuration=
+(1+Math.random()*2)+"s";
+
+
+gota.style.animationDelay=
+Math.random()*5+"s";
+
+
+document
+.getElementById("lluvia")
+.appendChild(gota);
+
+
+}
+
+
+
+
+function cambiarEscena(id){
+
+
+document
+.querySelectorAll(".escena")
+.forEach(e=>{
+
+e.classList.remove("activa");
+
+});
+
+
+document
+.getElementById(id)
+.classList.add("activa");
+
+
+}
+
+
+
+function abrirHistoria(){
+
+cambiarEscena("carta");
+
+}
+
+
+
+let mensaje=
+
+"Quiero pedirte perdón. Sé que pude hacerlo mejor y quiero demostrarte con hechos que me importas muchísimo";
+
+
+function abrirCarta(){
+
+
+document
+.querySelector(".sobre")
+.style.display="none";
+
+
+document
+.getElementById("textoCarta")
+.classList.add("visible");
+
+
+
+let i=0;
+
+
+let intervalo=setInterval(()=>{
+
+
+document
+.getElementById("escritura")
+.innerHTML += mensaje[i];
+
+
+i++;
+
+
+if(i>=mensaje.length)
+
+clearInterval(intervalo);
+
+
+},50);
+
+
+
+setTimeout(()=>{
+
+cambiarEscena("puzzle");
+
+},8000);
+
+
+
+}
+
+
+
+let reparaciones=0;
+
+
+function reparar(elemento,num){
+
+
+elemento.classList.add("reparada");
+
+
+elemento.innerHTML="❤️";
+
+
+reparaciones++;
+
+
+if(reparaciones==1){
+
+mensajePuzzle.innerHTML=
+"Perdón por mi acto inmaduro";
+
+}
+
+
+if(reparaciones==2){
+
+mensajePuzzle.innerHTML=
+"De verdad me interesas mucho";
+
+}
+
+
+if(reparaciones==3){
+
+mensajePuzzle.innerHTML=
+"Por favor perdóname";
+
+
+setTimeout(()=>{
+
+cambiarEscena("invitacion");
+
+},2000);
+
+
+}
+
+
+
+}
+
+// 👇 PEGA DESDE AQUÍ
+
+
+function aceptarDesayuno(){
+
+document.getElementById("respuestaFinal").innerHTML =
+"No te vas a arrepentir:) ";
+
+
+for(let i=0;i<100;i++){
+
+let corazon = document.createElement("div");
+
+corazon.innerHTML="❤️";
+
+corazon.style.position="fixed";
+
+corazon.style.left=Math.random()*100+"vw";
+
+corazon.style.top="-50px";
+
+corazon.style.fontSize=
+(20+Math.random()*30)+"px";
+
+corazon.style.animation=
+"caerCorazon 3s linear forwards";
+
+
+document.body.appendChild(corazon);
+
+
+setTimeout(()=>{
+
+corazon.remove();
+
+},3000);
+
+
+}
+
+}
+
+
+
+
+function noDesayuno(){
+
+document.getElementById("respuestaFinal").innerHTML =
+"De verdad no quiero aceptarlo:(";
+
+
+for(let i=0;i<80;i++){
+
+let corazon = document.createElement("div");
+
+corazon.innerHTML="💔";
+
+
+corazon.style.position="fixed";
+
+corazon.style.left=Math.random()*100+"vw";
+
+corazon.style.top="-50px";
+
+corazon.style.fontSize=
+(25+Math.random()*25)+"px";
+
+
+corazon.style.animation=
+"caerCorazonRoto 4s linear forwards";
+
+
+document.body.appendChild(corazon);
+
+
+setTimeout(()=>{
+
+corazon.remove();
+
+},4000);
+
+
+}
+
+}
+
+
+// 👆 HASTA AQUÍ
+
+
+
+
+</script>
+
+
+</body>
+</html>
